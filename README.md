@@ -4,7 +4,7 @@ The Reactor Lab is a collection of interactive simulations of chemical reactors 
 
 This project is being built with the open-source, Community Edition of LiveCode. Get it at www.LiveCode.org.
 
-Contributors are welcome. You need to use the LiveCode IDE, version 8 or higher, in order to use this project or to contribute to development of this project.
+You need to use the LiveCode IDE, version 8 or higher, in order to use this project.
 
 If you are interested, please read the Wiki for this project and contact Richard Herz.
 
