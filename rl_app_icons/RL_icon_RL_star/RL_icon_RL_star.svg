@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="RL icon RL star.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.30228572"
+     inkscape:cx="645.3125"
+     inkscape:cy="321.875"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1185"
+     inkscape:window-height="755"
+     inkscape:window-x="62"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.96494853px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect3756"
+       width="733.33331"
+       height="658.68524"
+       x="-0.68570888"
+       y="225.7578" />
+    <rect
+       style="fill:#537788;fill-opacity:0;opacity:0.23333333000000001"
+       id="rect2985"
+       width="740.74072"
+       height="740.74072"
+       x="1.8518518"
+       y="176.43626" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffff00;fill-opacity:1"
+       id="path3010"
+       sodipodi:sides="5"
+       sodipodi:cx="218.51852"
+       sodipodi:cy="159.76959"
+       sodipodi:r1="185.41652"
+       sodipodi:r2="68.148453"
+       sodipodi:arg1="0.6934595"
+       sodipodi:arg2="1.321778"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 361.11111,278.28811 235.31389,225.81599 149.86425,332.00744 160.89472,196.1524 33.495259,147.69992 166.10968,116.209 172.82213,-19.927723 243.75189,96.464861 375.29986,60.780215 286.52244,164.20571 z"
+       inkscape:transform-center-x="30.340143"
+       inkscape:transform-center-y="-7.5174535"
+       transform="matrix(2.1485877,0,0,2.015549,-69.953727,242.45981)" />
+    <text
+       xml:space="preserve"
+       style="font-size:838.78845215px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:0.99555556;stroke:none;font-family:Nanum Pen Script;-inkscape-font-specification:Nanum Pen Script"
+       x="140.96362"
+       y="789.34467"
+       id="text3784"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.89431154,0.07385599,-0.16155086,1.104837,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3786"
+         x="140.96362"
+         y="789.34467">RL</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2987"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion2989"><rect
+           id="rect2991"
+           width="168.51852"
+           height="50"
+           x="522.22223"
+           y="837.54736" /></flowRegion><flowPara
+         id="flowPara2993" /></flowRoot>  </g>
+</svg>

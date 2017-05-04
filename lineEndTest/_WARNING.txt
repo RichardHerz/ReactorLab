@@ -1,0 +1,2 @@
+WARNING - When use TextWrangler to open a file, use FILE SELECTOR to open and 
+UNCHECK BOX in file selector to translate line endings
