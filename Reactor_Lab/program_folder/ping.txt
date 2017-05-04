@@ -1,0 +1,4 @@
+online
+# first line must be "online"
+THIS IS LINE 3 WITH LF AT END
+THIS IS LINE 4 WITH LF AT END
