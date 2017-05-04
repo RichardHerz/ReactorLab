@@ -1,0 +1,1 @@
+-- The Reactor Lab was released as open-source software under the -- GNU General Public License v3.0 in April, 2017.-- View the license at https://www.gnu.org/licenses/gpl.html -- All Reactor Lab stacks and scripts prior to this date were designed and written-- by Richard K. Herz

@@ -1,0 +1,3 @@
+line01-LF
+line02
+line03

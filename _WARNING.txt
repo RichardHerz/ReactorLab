@@ -1,0 +1,12 @@
+
+WARNING: SETTING htmlText DESTROYS SUPERSCRIPTS, at least in LC 8, 9 (dp6) and possibly later versions. LC reports this happens when LC is opened in 32-bit mode but not 64-bit mode. If you develop in 64-bit mode, be careful if save a 32 bit standalone.
+
+This is a reported bug: [Bug 19613] text superscripts destroyed when set htmlText in LC 8 and 9]
+
+BEFORE STANDALONE DISTRIBUTION: 
+
+In order to provide all source code with an open-source standalone app, make a copy of final version of file Reactor_Lab.livecode and a this copy in scripts folder.
+
+Change contents of first_use.txt to false in scripts folder.
+
+Delete all contents of list.txt file in scripts folder. 

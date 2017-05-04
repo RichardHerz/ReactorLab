@@ -1,0 +1,1 @@
+L1 Sulfur Dioxide Oxidation $ D3L1_Sulfur_Dioxide_Oxidation $ 20061122 $ (local) L2 PFR With Heat Exchange $ D3L2_PFR_With_Heat_Exchange $ 20061122 $ (local) L3 Steady State CSTR  $ D3L3_Steady_State_CSTR $ 20061122 $ (local) L4 Dynamic CSTR $ D3L4_Dynamic_CSTR $ 20040830  $ (local) L5 Reaction Calorimeter $ D3L5_Reaction_Calorimeter $ 20060211 $ (local) 

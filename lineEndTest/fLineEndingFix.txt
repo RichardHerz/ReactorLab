@@ -1,0 +1,17 @@
+function fLineEndingFix tText
+   -- reactor lab file lists and file updates need LF line endings
+   -- but CR and CRLF line endings may be added by desktop editors
+   -- command "replace CR with LF in tText" does not work
+   -- so scan byte-by-byte
+   put the number of bytes of tText into tNum
+   repeat with k = tNum down to 1
+      if charToNum(byte k of tText) is 13 then -- byte k is CR
+         if charToNum(byte k+1 of tText) is 10 then -- byte k+1 is LF (false & no error when k = tNum)
+            delete byte k of tText -- delete CR since followed by LF
+         else
+            put numToChar(10) into byte k of tText -- replace CR with LF
+         end if
+      end if
+   end repeat
+   return tText
+end fLineEndingFix
