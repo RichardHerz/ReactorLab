@@ -123,7 +123,8 @@ on bootStep02
    -- WARNING: do not change gMainLabWebSiteUrlShort and tMainFolder 
    --                  unless you know what you are doing!
    --    put "ReactorLab.net" into gMainLabWebSiteUrlShort
-   put "ReactorLab.github.io" into gMainLabWebSiteUrlShort
+   --    put "ReactorLab.github.io" into gMainLabWebSiteUrlShort
+   put "richardherz.github.io/ReactorLab" into gMainLabWebSiteUrlShort
    put "support@reactorlab.net" into gSupportEmail
    --    put "rl_net_new" into tMainFolder
    --    put "openlab" into tMainFolder 
