@@ -1,3 +1,0 @@
-line01-CRLF
-line02
-line03

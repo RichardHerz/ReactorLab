@@ -1,1 +1,0 @@
-START SESSION (Directory openStack) at 1598404665.076073 seconds from 1-Jan-1970 GMT6:17:45 PM, start session6:18:27 PM, leave Dynamic Mixed Tank 6:19:09 PM, leave Dynamic Pipe Reactor 6:19:27 PM, enter Parallel Reactions  6:19:29 PM, leave Parallel Reactions 6:19:47 PM, leave Dynamic Mixed Tank 
