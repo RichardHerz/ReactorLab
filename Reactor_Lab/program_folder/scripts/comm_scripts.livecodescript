@@ -97,18 +97,18 @@ end logHistory
 # ------------------------------
 
 on tester tText # for development
-   if the environment is "development" then
-      put LF & tText & LF into tText
-      if there is a stack "test" then
-         put tText after field 1 of stack "test"
-         set the scroll of field 1 of stack "test" to 1e6 -- xxx check for better way to scroll to end
-      else
-         if the cFirstDevMsg of me is false then
-            answer "Open stack test.livecode to see developent messages."
-            set the cFirstDevMsg of me to true
-         end if
-      end if
-   end if
+   --   if the environment is "development" then
+   --      put LF & tText & LF into tText
+   --      if there is a stack "test" then
+   --         put tText after field 1 of stack "test"
+   --         set the scroll of field 1 of stack "test" to 1e6 -- xxx check for better way to scroll to end
+   --      else
+   --         if the cFirstDevMsg of me is false then
+   --            answer "Open stack test.livecode to see developent messages."
+   --            set the cFirstDevMsg of me to true
+   --         end if
+   --      end if
+   --   end if
 end tester
 
 # ------------------------------

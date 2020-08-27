@@ -11,5 +11,5 @@ Reactor Lab was developed by Richard K. Herz and used by his students of Chemica
 
 The most recent builds of application files for Windows OS can be downloaded from ReactorLab.net.
 
-![RL wiki image 05](https://github.com/RichardHerz/ReactorLab/blob/master/web_pages/graphics/wiki_05.png)
+![RL wiki image 05](https://github.com/RichardHerz/ReactorLab/blob/master/index_graphics/wiki_05.png)
 
