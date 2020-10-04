@@ -1,9 +1,9 @@
 ﻿script "comm scripts"
--- The Reactor Lab was released as open-source software under the 
+-- The Reactor Lab was released as open-source software under the
 -- GNU General Public License v3.0 in April, 2017.
--- View the license at https://www.gnu.org/licenses/gpl.html 
+-- View the license at https://www.gnu.org/licenses/gpl.html
 -- All Reactor Lab stacks and scripts prior to this date were designed and written
--- by Richard K. Herz 
+-- by Richard K. Herz
 
 -- stacks and scripts by Richard K. Herz, all rights reserved, 2001-2016
 --
@@ -19,7 +19,7 @@
 -- revised December 2016, move command logHistory from confer_scripts.livecode to here & revise
 
 local lStime
-local lCancelled 
+local lCancelled
 local lStartTicks
 local lDownloadProgressStack
 
@@ -39,9 +39,9 @@ global gPingURL
 --------------------------------
 
 on logHistory
- 
-    constant kLoggerURL="http://reactorlab.net/openlab/logger/logger.lc" 
-   
+
+    constant kLoggerURL="https://reactorlab.net/openlab/logger/logger.lc"
+
    # this adds any previously unlogged history to gHistory
    # then sends gHistory to server via HTTP POST if possible or, if not,
    # appends it to disk file for sending later
@@ -58,24 +58,24 @@ on logHistory
       # get from client log file any previous history not logged to server
       put url tClientLogFileURL into tPreHistory
       put fLineEndingFix(tPreHistory) into tPreHistory
-      -- don't want user's disk to fill up 
+      -- don't want user's disk to fill up
       if the number of characters in tPreHistory > 1000000 then
          put "DELETE BIG HISTORY > 1000000 characters!" into tPreHistory
       end if
       -- empty the log file on client
       put empty into url tClientLogFileURL
-   end if 
-   
+   end if
+
    -- logger on server will strip any empty lines
    put tPreHistory & LF before gHistory
-   
+
    -- use session start seconds to identify session, since IP address may change if user moves on WIFI
    -- during session, logger will add this IP address at server, in any event
    put the cSessionStartSeconds of stack "Directory" into tStart
    put tStart && "seconds from 1-Jan-1970 GMT at session start" into tSessionID
    if the environment is "development" then
       put LF & "** GITHUB - DEVELOPMENT ENVIRONMENT **" after tSessionID
-      put LF & "in comm scripts, logHistory, just before post, server removes empty lines" & LF & LF into tMsg 
+      put LF & "in comm scripts, logHistory, just before post, server removes empty lines" & LF & LF into tMsg
       put "------------" & LF & tSessionID & LF & gHistory & LF & "---------------" & LF & LF after tMsg
       tester tMsg
    end if
@@ -119,26 +119,26 @@ end tester
 -- first two lines below in bootStep02 in comm scripts
 
 on bootStep02
-   
-   -- WARNING: do not change gMainLabWebSiteUrlShort and tMainFolder 
+
+   -- WARNING: do not change gMainLabWebSiteUrlShort and tMainFolder
    --                  unless you know what you are doing!
    --    put "ReactorLab.net" into gMainLabWebSiteUrlShort
    --    put "ReactorLab.github.io" into gMainLabWebSiteUrlShort
    put "richardherz.github.io/ReactorLab" into gMainLabWebSiteUrlShort
    put "support@reactorlab.net" into gSupportEmail
    --    put "rl_net_new" into tMainFolder
-   --    put "openlab" into tMainFolder 
-   put "Reactor_Lab/program_folder" into tMainFolder 
-   
+   --    put "openlab" into tMainFolder
+   put "Reactor_Lab/program_folder" into tMainFolder
+
    -- the next lines are from initEngine moved here
-   
+
    -- gHomeURLDefault is URL checked if all others don't download a LiveCode stack
-   --    put "http://" & gMainLabWebSiteUrlShort & "/" & tMainFolder into gHomeURLDefault
+   --    put "https://" & gMainLabWebSiteUrlShort & "/" & tMainFolder into gHomeURLDefault
    put "https://" & gMainLabWebSiteUrlShort & "/" & tMainFolder into gHomeURLDefault
-   
+
    -- specify list of URLs to stacks on servers; more than one in case preferred one is down
    -- xxx not sure if this feature has been implemented
-   
+
    -- new for merge
    -- the next lines are from pingOnStartup moved here
    --
@@ -147,7 +147,7 @@ on bootStep02
    -- xxx engine's hostNameToAddress(), which contacts a
    -- xxx name server to get IP address BUT problem if no net connection!
    put gHomeURLDefault & "/ping.txt" into gPingURL
-   
+
    set cursor to watch
    set the cFirstDevMsg of me to false -- used in tester command in this stack
    # need to put this script into the backScripts (with "into back")
@@ -160,9 +160,9 @@ on bootStep02
    # setting vis to false doesn't seem to work when engine is standalone
    put empty into gHistory # initialize so other scripts can append to it
    put gPathToEngineFolder & "/program_folder/scripts/Directory.livecode" into tPath
-   
+
    if there is a stack tPath then
-      
+
       if the environment is not "development" then
          -- FOR WEB BROWSER altBrowser
          -- need to set externals before opening stack OR set in stack then close/destroy and reopen
@@ -190,7 +190,7 @@ on bootStep02
          -- WARNING: ALSO SEE THIS IN UPDATER STACK which closes and reopens updated Directory stack
          -- but BE CAREFUL IF COPY since name of stack whose externals are being set are different
       end if
-      
+
       go stack tPath
    else
       answer "Missing Directory file!"
@@ -219,11 +219,11 @@ on startLibUrl
 end startLibUrl
 
 on initEngine
-  
+
   # if there is a button "secure mode" then
   # set the hilite of button "secure mode" to false
   # end if
-  
+
   if there is a button "info" then
     if the platform is "WinOS" then
       set the textFont of button "info" to "courier new"
@@ -231,9 +231,9 @@ on initEngine
       set the textFont of button "info" to "courier"
     end if
   end if
-  
+
   displayStatus empty
-    
+
 end initEngine
 
 # -------------------------------
@@ -280,32 +280,32 @@ end pingCancel
 # -------------------------------
 
 on pingOnStartUp
-   
+
    tester "comm scripts, enter pingOnStartUp, gPingURL = " & LF & gPingURL
-   
+
    -- use to check network connection on first start of Lab
    -- and do nonblocking load so user can cancel the check
    setInfo "Checking network connection..."
    loadGoStartPing gPingURL -- new for merge
-   
+
    tester "comm scripts, at end pingOnStartUp"
-   
+
 end pingOnStartUp
 
 # -------------------------------
 
 function pingPassive
    -- this is called several places in the Directory stack
-   
+
    # xxx if no hardware connection to net, then can get
    # xxx hung up in liburl's ulGetFormat when it calls
    # xxx engine's hostNameToAddress(), which contacts a
    # xxx name server to get IP address BUT problem if no net connection!
    put gPingURL into tPingURL -- new for merge
    put "offline" into tResult
-   
+
    tester "comm scripts, function pingPassive, tPingURL = " & tPingURL
-   
+
    -- repeat get url because doesn't always work first time or two
    put 10 into tRepeatAttempts
    put 0 into tRepeats
@@ -317,16 +317,16 @@ function pingPassive
          exit repeat
       end if
    end repeat
-   
+
    if the result is empty then
-      
+
       put it into tPage
       put fLineEndingFix(tPage) into tPage
-      
+
       tester "comm scripts, function pingPassive, the result empty, tPage = " & tPage
-      
+
       # contents of line 1 of ping.txt must be "online"
-      if line 1 of tPage is "online" then 
+      if line 1 of tPage is "online" then
          put "online" into tResult
       end if
    else
@@ -338,10 +338,10 @@ end pingPassive
 # -------------------------------
 
 on phoneHome
-     
+
    put gHomeURLDefault & "/rl_updater.livecode" into tHomeURL
    loadGoStart tHomeURL
-   
+
 end phoneHome
 
 # -------------------------------
@@ -352,35 +352,35 @@ end phoneHome
 # -------------------------------
 
 on loadGoStart href
-   
+
    -- separate this from loadGoStartContinue and set counter
    -- so can repeat if trouble below
    set the cConnectCounter of me to 0
    tester "comm scripts, loadGoStart, just before send loadGoStartContinue"
    send "loadGoStartContinue" && quote & href & quote to me in 10 milliseconds
-   
+
 end loadGoStart
 
 # -------------------------------
 
 on loadGoStartContinue href
-   
+
    tester "comm scripts, enter loadGoStartContinue, href = " & LF & href
-   
+
    put false into lCancelled
    put gPathToEngineFolder into lDownloadProgressStack
-   
+
    put "/program_folder/scripts/download_progress.livecode" after lDownloadProgressStack
-   
+
    tester "comm scripts, loadGoStartContinue, lDownloadProgressStack = " & LF & lDownloadProgressStack
-   
+
    if there is a stack "comm scripts" then # won't be if running from "default comm scripts"
-      
+
       tester "comm scripts, loadGoStartContinue, there is a stack comm scripts"
-      
+
       # zzz think now I want to always show download progress stack - really need on dialup!
       set the cShowDownloadProgress of stack "comm scripts" to "show"  # zzz
-      
+
       if the cShowDownloadProgress of stack "comm scripts" is not "hide" then
          if there is a stack lDownloadProgressStack then
             # apparently can't open this "as modal" without also
@@ -390,20 +390,20 @@ on loadGoStartContinue href
             if the short name of the topstack is "Directory" then
                set the loc of stack lDownloadProgressStack to the loc of stack "Directory"
             end if
-         end if  
+         end if
          put the ticks into lStartTicks
          set the itemDelimiter to "/"
          put the last item of href into tref
          set the itemDelimiter to "."
          put item 1 of tref into tref
          replace "_" with space in tref
-         
+
          if the cGetLocalLab of stack "Directory" is true then
             get fDisplayDownloadTitle("Check for updates:" && tref)
          else
             get fDisplayDownloadTitle("Downloading: " && tref)
          end if
-         
+
          displayStatus empty
          put "contacting" into field "status" of stack lDownloadProgressStack
          set the thumbPos of sb 1  of stack lDownloadProgressStack to 0
@@ -412,30 +412,30 @@ on loadGoStartContinue href
    tester "comm scripts, loadGoStartContinue, just before load href, href = " & LF & href
    load href
    displayStatus "contacting"
-   
+
    tester "comm scripts, loadGoStartContinue, displayStatus > contacting"
-   
+
    tester "comm scripts, loadGoStartContinue, just after load href, href = " & LF & href
-   
+
    -- set counter so can repeat in case trouble below in finish
    put the cConnectCounter of me into tCount
    add 1 to tCount
    set the cConnectCounter of me to tCount
-   
+
    tester "comm scripts, loadGoStartContinue, just before send loadGoFinish"
    send "loadGoFinish" && quote & href & quote to me in 1000 milliseconds
    put the long seconds into lStime
-   
+
 end loadGoStartContinue
 
 # -------------------------------
 
 on loadGoFinish href
-   
+
    local stat, nk
-   
+
    tester "comm scripts, enter loadGoFinish, href = " & LF & href
-   
+
    if lCancelled then
       tester "comm scripts, loadGoFinish, lCancelled is true"
       unload url href
@@ -444,52 +444,52 @@ on loadGoFinish href
       end if
       exit loadGoFinish
    end if
-   
+
    put urlStatus(href) into stat
    displayStatus stat
-   
+
    if stat contains "error" or stat contains "not found" \
          or stat contains "time out" or stat contains "timeout" then
-      
+
       tester "comm scripts, loadGoFinish, stat contains error, not found, time out, or timeout"
-      
+
       if there is a stack lDownloadProgressStack then
          close stack lDownloadProgressStack
       end if
-      
+
       ## zzz get stat = error about every 10th time if are off line
       ## zzz pingPassive() returns online when trouble happens
-      ## zzz and then click lab and say connect    
+      ## zzz and then click lab and say connect
       ## zzz when this happened, manually clicking the divs and the labs again worked
       ## zzz so automate that process and try it in one repeat
-      
+
       tester "comm scripts, loadGoFinish, just before unload href, href = " & href
-      
+
       unload url href
       displayStatus empty
       put the cConnectCounter of me into tCount
-      
+
       if tCount < 2 and the cClickSPECIAL of field "the labs" of card "dir" of stack "Directory" is not "true" then
-         
+
          send "getLabListFromServer" to field "the divs" of card "dir" of stack "Directory"
          set the cClickSPECIAL of field "the labs" of card "dir" of stack "Directory" to "true"
          send mouseUpSPECIAL to field "the labs" of card "dir" of stack "Directory" in 1 second
-         
+
       else
-         
+
          answer "Trouble connecting.  Try:" & LF &\
          "1) Click on line button again." & LF &\
          "2) Click this division and lab again." & LF &\
          "3) Can you reach" && gMainLabWebSiteUrlShort && "with web browser?" -- new for merge
       end if
-      
+
       exit loadGoFinish
    end if
-   
+
    if stat contains "cached" then
-      
+
       tester "comm scripts, loadGoFinish, stat contains cached, handle the downloaded file"
-      
+
       if there is a stack lDownloadProgressStack then
          if the cShowDownloadProgress of stack "comm scripts" is empty then
             put the ticks - lStartTicks into temp
@@ -504,7 +504,7 @@ on loadGoFinish href
          wait 500 milliseconds
          close stack lDownloadProgressStack
       end if
-      
+
       set the itemDelimiter to "."
       if the last item of href is "gz" then
          -- gzipped file
@@ -515,9 +515,9 @@ on loadGoFinish href
          -- not gzipped file
          put url href into temp
       end if
-      
+
       tester "comm scripts, loadGoFinish, before deciding how to handle downloaded file"
-      
+
       if offset("REVO",word 1 of temp) = 1 AND the version < 2.7 then
          answer "This module requires a newer version of the Lab distribution." & LF & "Please get it at" && gMainLabWebSiteUrlShort
          tester "comm scripts, loadGoFinish, this lab module requires a newer version of app"
@@ -526,7 +526,7 @@ on loadGoFinish href
          displayStatus empty
          exit loadGoFinish
       end if
-      
+
       if word 1 of temp is "#!/bin/sh" OR offset("REVO",word 1 of temp) = 1 then
          displayStatus empty
          tester "comm scripts, loadGoFinish, good stack, go to stack and exit loadGoFinish"
@@ -542,26 +542,26 @@ on loadGoFinish href
          displayStatus empty
          exit loadGoFinish
       end if
-      
+
    end if
-   
+
    if item 1 of stat is "loading" then
-      
+
       tester "comm scripts, loadGoFinish, item 1 of stat is loading"
-      
+
       put item 2 of stat div 1024 into nk
       put nk & "K/" & item 3 of stat div 1024 & "K  "\
             & nk * 10 div (the long seconds - lStime) / 10 & "K/sec" into tprog
       displayStatus tprog
-      
+
       if there is a stack lDownloadProgressStack then
          put tprog into field "status" of stack lDownloadProgressStack
          set the endValue of sb 1 of stack lDownloadProgressStack to item 3 of stat
          set the thumbpos of sb 1 of stack lDownloadProgressStack to item 2 of stat
       end if
-      
+
    end if
-   
+
    if stat is empty then
       tester "comm scripts, loadGoFinish, stat is empty"
       displayStatus empty
@@ -571,7 +571,7 @@ on loadGoFinish href
       end if
       exit loadGoFinish
    end if
-   
+
    if stat is "requested" then
       tester "comm scripts, loadGoFinish, stat is requested, sending loadGoFinish to me"
       displayStatus "requested"
@@ -579,26 +579,26 @@ on loadGoFinish href
    else
       send "loadGoFinish" && quote & href & quote to me in 500 milliseconds
    end if
-   
+
 end loadGoFinish
 
 # -------------------------------
 
 on loadGoStartPing href
-   
+
    -- this is for first check of network connection when starting the Lab
-   
+
    tester "comm scripts, start of loadGoStartPing, href = " & LF & href
-   
+
    put false into lCancelled
    put gPathToEngineFolder into lDownloadProgressStack
-   
+
    put "/program_folder/scripts/download_progress.livecode" after lDownloadProgressStack
-   
+
    if there is a stack "comm scripts" then # won't be if running from "default comm scripts"
-      
-      set the cShowDownloadProgress of stack "comm scripts" to "show" 
-      
+
+      set the cShowDownloadProgress of stack "comm scripts" to "show"
+
       if the cShowDownloadProgress of stack "comm scripts" is not "hide" then
          if there is a stack lDownloadProgressStack then
             # apparently can't open this "as modal" without also
@@ -608,7 +608,7 @@ on loadGoStartPing href
             if the short name of the topstack is "Directory" then
                set the loc of stack lDownloadProgressStack to the loc of stack "Directory"
             end if
-         end if  
+         end if
          put the ticks into lStartTicks
          set the itemDelimiter to "/"
          put the last item of href into tref
@@ -620,61 +620,61 @@ on loadGoStartPing href
          set the thumbPos of sb 1  of stack lDownloadProgressStack to 0
       end if
    end if
-   
+
    load href -- non-blocking load, check status in loadGoFinishPing
-   
+
    displayStatusPing "contacting"
    send "loadGoFinishPing" && quote & href & quote to me in 500 milliseconds
    put the long seconds into lStime
-   
+
    tester "comm scripts, at end of loadGoStartPing,  displayStatusPing > contacting"
-   
+
 end loadGoStartPing
 
 # -------------------------------
 
 on loadGoFinishPing href
-   
+
    local stat, nk
-   
+
    tester "comm scripts, start of loadGoFinishPing, href = " & LF & href
-   
+
    if lCancelled then
-      
+
       tester "comm scripts, loadGoFinishPing, lCancelled is true"
-      
+
       unload url href
-      
+
       if there is a stack lDownloadProgressStack then
          close stack lDownloadProgressStack
       end if
-      
+
       startUpOffline
       exit loadGoFinishPing
-      
+
    end if
-   
+
    put urlStatus(href) into stat
    displayStatusPing stat
-   
+
    tester "comm scripts, loadGoFinishPing, displayStatusPing stat = " & stat
-   
+
    if stat contains "error" or stat contains "not found" \
          or stat contains "time out" or stat contains "timeout" then
-      
+
       if there is a stack lDownloadProgressStack then
          close stack lDownloadProgressStack
       end if
-      
+
       startUpOffline
       unload url href
       displayStatusPing empty
       tester "comm scripts, loadGoFinishPing, just after unload url and before exit due to stat"
       exit loadGoFinishPing
    end if
-   
+
    if stat contains "cached" then
-      
+
       tester "comm scripts, loadGoFinishPing, stat is cached"
       if there is a stack lDownloadProgressStack then
          if the cShowDownloadProgress of stack "comm scripts" is empty then
@@ -686,13 +686,13 @@ on loadGoFinishPing href
             end if
          end if
          put "Done" into field "status" of stack lDownloadProgressStack
-         set the thumbpos of sb 1 of stack lDownloadProgressStack to the endValue of sb 1 of stack lDownloadProgressStack    
+         set the thumbpos of sb 1 of stack lDownloadProgressStack to the endValue of sb 1 of stack lDownloadProgressStack
       end if
-      
+
       put url href into tresult
       put fLineEndingFix(tresult) into tresult
       tester "comm scripts, loadGoFinishPing, after put url href into tresult, tresult = " & LF & tresult
-      
+
       # contents of line 1 of ping.txt must be "online"
       if line 1 of tresult is "online" then
          tester "comm scripts, loadGoFinishPing, ping is onlne, just before startUpOnline"
@@ -705,49 +705,49 @@ on loadGoFinishPing href
       unload url href
       tester "comm scripts, just before exit loadGoFinishPing after unload url href"
       exit loadGoFinishPing
-      
+
    end if
-   
+
    if item 1 of stat is "loading" then
-      
+
       tester "comm scripts, loadGoFinishPing, item 1 of stat is loading"
       put item 2 of stat div 1024 into nk
       put nk & "K/" & item 3 of stat div 1024 & "K  "\
             & nk * 10 div (the long seconds - lStime) / 10 & "K/sec" into tprog
       displayStatusPing tprog
-      
+
       if there is a stack lDownloadProgressStack then
          put tprog into field "status" of stack lDownloadProgressStack
          set the endValue of sb 1 of stack lDownloadProgressStack to item 3 of stat
          set the thumbpos of sb 1 of stack lDownloadProgressStack to item 2 of stat
       end if
-      
+
       tester "comm scripts, loadGoFinishPing, just before send loadGoFinishPing to me"
       send "loadGoFinishPing" && quote & href & quote to me in 500 milliseconds
       exit loadGoFinishPing
-      
+
    end if
-   
+
    if stat is empty then
-      
+
       tester "comm scripts, loadGoFinishPing, stat is empty"
       displayStatusPing empty
-      
+
       tester "comm scripts, loadGoFinishPing, stat is empty, just before send loadGoFinishPing to me"
       send "loadGoFinishPing" && quote & href & quote to me in 500 milliseconds
       exit loadGoFinishPing
-      
+
    end if
-   
+
    if stat contains "contacted" then
-      
+
       tester "comm scripts, loadGoFinishPing, stat contains contacted"
       displayStatusPing stat
       tester "comm scripts, loadGoFinishPing, stat contains contacted, just before send loadGoFinishPing to me"
       send "loadGoFinishPing" && quote & href & quote to me in 500 milliseconds
       exit loadGoFinishPing
    end if
-   
+
    if stat is "requested" then
       tester "comm scripts, loadGoFinishPing, stat is requested"
       displayStatusPing "requested"
@@ -755,9 +755,9 @@ on loadGoFinishPing href
       send "loadGoFinishPing" && quote & href & quote to me in 500 milliseconds
       exit loadGoFinishPing
    end if
-   
+
    tester "comm scripts, at end loadGoFinishPing"
-   
+
 end loadGoFinishPing
 
 # -------------------------------
@@ -800,54 +800,54 @@ on displayStatus tStatus
 end displayStatus
 
 on displayStatusPing tStatus
-   
+
    if there is a stack lDownloadProgressStack then
       if there is a field "status" of stack lDownloadProgressStack then
          put tStatus into field "status" of stack lDownloadProgressStack
       end if
    end if
-   
+
 end displayStatusPing
 
 # -------------------------------
 
 on unloadAll
-  
+
   repeat for each line i in the cachedURLs
     unload url i
   end repeat
-  
+
 end unloadAll
 
 # -------------------------------
 
 function stripper tVar
-  
+
   # strips spaces before and after, and returns after string
-  
+
   # on one server (Win NT server) I am getting an ASCII 13
   # which isn't recognized as return or cr
   # this doesn't happen on other servers (Sun Unix server)
-  
+
   repeat while charTOnum(the last char of tVar) is 13
     #    answer "delete an ASCII 13 (return)"
     delete the last character of tVar
   end repeat
-  
+
   repeat while the last character of tVar is return
     delete the last character of tVar
   end repeat
-  
+
   repeat while the last character of tVaris is space
     delete the last character of tVar
   end repeat
-  
+
   repeat while the first character of tVar is space
     delete the first character of tVar
   end repeat
-  
+
   return tVar
-  
+
 end stripper
 
 # ------------------------------
@@ -865,21 +865,21 @@ on revGoURL pWhich
       put queryRegistry("HKEY_CLASSES_ROOT\mailto\shell\open\command\") into tMailApp
       replace quote & "%1" & quote with pWhich in tMailApp
       replace "%1" with pWhich in tMailApp
-      
+
       --older versions use %l ("pecent L")
       replace quote & "%l" & quote with pWhich in tMailApp
       replace "%l" with pWhich in tMailApp
-      
+
       -- for the new and wonderful XP
       replace "%ProgramFiles%" with $ProgramFiles in tMailApp
-      
+
       open process tMailApp for neither # original
-      
+
       # launch tMailApp
       # if the result is not empty then
       # answer "Sorry, can't open mail application." & LF & "Please do it manually."
       # end if
-      
+
     else
       put word 1 of queryRegistry("hkey_local_machine\software\classes\http\shell\open\command\") into tWebBrowserPath
       if not tNT then
@@ -910,7 +910,7 @@ on revMail pTo, pCC, pSubject, pBody
     if pCC is not empty then put true into tCC
     if pSubject is not empty then put true into tSubject
     if pBody is not empty then put true into tBody
-    
+
     put "mailto:" & pTo into tURL
     if tCC then
       if (tURL contains "?Subject=") or (tURL contains "?Body=") then
