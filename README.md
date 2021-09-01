@@ -1,9 +1,9 @@
 # ReactorLab
 The desktop app Reactor Lab is a collection of interactive simulations of chemical reactors for active learning.
 
-This project was built with the open-source, Community Edition of LiveCode. Get it at www.LiveCode.org.
+This project was built with LiveCode. Get it at LiveCode.com.
 
-You need to use the LiveCode IDE, version 8 or higher, in order to use this project.
+You need to use LiveCode, version 8 or higher, in order to use this project.
 
 If you are interested, PLEASE READ THE WIKI FOR THIS PROJECT (see Wiki tab above) and contact Richard Herz.
 
